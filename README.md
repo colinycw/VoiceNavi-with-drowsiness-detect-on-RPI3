@@ -233,7 +233,7 @@ t1.start()
 t2.start()
 ```
 
-After that, we can execute the python script by typing in the code below and make this system working. Well done!
+After that, we can execute the python script by typing in the code below and make this system working. Drive safe!
 ```
 $ python saveDrive.py
 ```
