@@ -29,15 +29,29 @@ $ conda install conda
 $ source activate navi
 ```
 
+For more information on how to use Conda, visit documentation website on https://conda.io/docs/
 
-Step2: Setting Up Hardware
+Step3: Setting Up Hardware
 ==========================
 
-In order to setup necessary hardwares mentioned above, we are going through some dependencies installing and configuration setting process. Insert the following code in RPI3 terminal:
+In order to setup necessary hardwares mentioned in step1, we are going through some dependencies installing and configuration setting process. Insert the following code in RPI3 terminal:
 
 ```
 $ sudo apt-get update
 $ sudo apt-get -y upgrade
 ```
 
-Enable the SPI interface used by PiCamera: 
+Installing PiCamera dependencies and enabling SPI and Camera interface used by PiCamera: 
+
+```
+$ pip install picamera[array]
+$ sudo raspi-config
+```
+
+![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/Camera.png "Enable camera interface")
+![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/SPI.png "Enable SPI interface")
+
+  Step3.1: Test out the PiCamera module
+  -------------------------------------
+  
+  Before we run into the code, let do a quick check on whether camera is working properly.
