@@ -1,5 +1,7 @@
 # VoiceNavi-with-drowsiness-detect-on-RPI3
 
+Step1: What do we need?
+=======================
 In this guide, we will be using:
 
   - Raspberry Pi 3
@@ -8,14 +10,34 @@ In this guide, we will be using:
   - Speaker
   - PiCamera
 
-Setting Up Hardware
-===================
+Step2: Setting Up Environment
+=============================
+For the sake of tidiness in system wide python library, we will be finishing this whole project within one virtual environment. The package management program we are using in this project is called "Berryconda", which is a Conda based distribution for the RPI3. To install Berryconda on RPI3, first download installer script according to the Raspberry Pi you are using from the website below and follow the steps:
 
-In order to setup necessary hardware running on RPI3, we are going through some dependencies installing and configuration setting process. Insert the following code in RPI3 terminal:
+https://github.com/jjhelmus/berryconda
+
+```
+$ chmod +x Berryconda3-2.0.0-Linux-armv7l.sh`
+$ ./Berryconda3-2.0.0-Linux-armv7l.sh
+```
+
+After following the prompt and finish the installation, we are then creating a virtual environment called "navi" and going into the virtual environment.
+
+```
+$ conda create -n navi
+$ conda install conda
+$ source activate navi
+```
+
+
+Step2: Setting Up Hardware
+==========================
+
+In order to setup necessary hardwares mentioned above, we are going through some dependencies installing and configuration setting process. Insert the following code in RPI3 terminal:
 
 ```
 $ sudo apt-get update
-$ sudo apt-get --dist -y upgrade
+$ sudo apt-get -y upgrade
 ```
 
 Enable the SPI interface used by PiCamera: 
