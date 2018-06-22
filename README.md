@@ -155,7 +155,7 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ pip install scipy scikit-image
   ```
   
-  Installing dlib by typing:
+  Install dlib by typing:
   ```
   $ pip install dlib
   ```
@@ -166,3 +166,8 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   If the installation process was working fine, the results of import command should give you the exact same output as depicted in the picture below.
   
   ![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/opencv%20and%20dlib%20test.png)
+
+  Step 4.4: Building drowsiness detection with OpenCV and dlib
+  ------------------------------------------------------------
+  
+  
