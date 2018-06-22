@@ -143,8 +143,26 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   
   And finally, create a soft link OpenCV bindings from where your OpenCV is installed.
   ```
-  sudo ln -s /usr/local/lib/python2.7/dist-packages/cv2.so /home/pi/berryconda3/envs/navi/lib/python3.5/site-packages
+  $ sudo ln -s /usr/local/lib/python2.7/dist-packages/cv2.so /home/pi/berryconda3/envs/navi/lib/python3.5/site-packages
   ```
   
   Step 4.2: Install dlib
   ----------------------
+
+  First of all, we are going to install prerequisites for dlib library by typing the following command into terminal:
+  ```
+  $ sudo apt-get install build-essential cmake libgtk-3-dev libboost-all-dev
+  $ pip install scipy scikit-image
+  ```
+  
+  Installing dlib by typing:
+  ```
+  $ pip install dlib
+  ```
+  
+  Step 4.3: Testing OpenCV and dlib
+  ---------------------------------
+  
+  If the installation process was working fine, the results of import command should give you the exact same output as depicted in the picture below.
+  
+  ![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/opencv%20and%20dlib%20test.png)
