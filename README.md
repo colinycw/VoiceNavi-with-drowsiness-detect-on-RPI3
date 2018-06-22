@@ -1,5 +1,7 @@
 # VoiceNavi-with-drowsiness-detect-on-RPI3
 
+The primary purpose for this navigation system is where it can act as a verbal guidance for the driver on their way but simultaneously detecting whether the driver is truly focusing on driving! This is particularly useful when people are in a long haul drive or for someone like truck drivers who would usually driving for a long time. By implementing this system on every cars, we are able to create a safer driving environment not only for driver themselves but also for those people who have rights to be on a safe and secure highway or road. Nonetheless, the most effective way of protecting everyone's safety while driving is operating vehicles according to local regulations as well as making sure we are in the best physical and mental state of driving a car.
+
 Step 1: What do we need?
 =======================
 In this guide, we will be using:
@@ -190,4 +192,48 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
 Step 5: Setting Up Waze Navigation Application
 ==============================================
 
-The program we will be using for navigation is an open source application called "Waze". The installation process of it is relatively simple in contrast to drowsiness detection in the previous step. 
+The program we will be using for navigation is an open source application called "Waze". The installation process of it would be relatively simple in contrast to the previous step. To install waze on RPI3, we need to download the source code of backport of waze to linux on this website: https://github.com/sashakh/waze
+
+And then, download required dependencies for building waze by type in the following code:
+```
+$ sudo apt-get install libgps-dev libsqlite3-dev libgtk2.0-dev libagg-dev libfribidi-dev libssl-dev
+$ make
+$ make install-user
+$ make install
+```
+
+To run the program, execute code in terminal:
+```
+$ waze
+```
+
+Because of the fact that we are not using a working gps module for positioning in this project, we can only use this as a demo and see the result in the picture below. But it still proves that the program is working properly on RPI3!
+![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/waze.png "Waze")
+
+Step 6: Hook Up All The Stuff
+=============================
+
+Just like what we have mentioned at the very begining of this guide. We want a navigation system act as an verbal guidance and also detecting drive's degree of concentration all at the same time. Now we have two of our major modules each working perfectly by their own, we are then going to let them doing their jobs in a simultaneous manner. To order to do this, create a python script called "saveDrive.py" and insert the following code in it: (Or you may directly download the python script file in this branch.)
+
+```
+import os
+import threading 
+
+def drowsinessDetect():
+	os.system("sudo modprobe bcm2835-v4l2")
+	os.system("python ~/IOT/Drowsiness\ detection/nosleep.py --shape-predictor ~/IOT/Drowsiness\ detection/landmarks.dat --alarm ~/IOT/Drowsiness\ detection/alarm.wav")
+
+def navigation():
+	os.system("waze")
+
+t1 = threading.Thread(target=drowsinessDetect, args=[])
+t2 = threading.Thread(target=navigation, args=[])
+
+t1.start()
+t2.start()
+```
+
+After that, we can execute the python script by typing in the code below and make this system working. Well done!
+```
+$ python saveDrive.py
+```
