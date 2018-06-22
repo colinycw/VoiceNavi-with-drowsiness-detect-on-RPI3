@@ -108,3 +108,43 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ unzip opencv_contrib.zip
   ```
   
+  Before compiling OpenCV source code, we have to install Numpy package and setup our build by typing:
+  ```
+  $ pip install numpy
+  $ cd ~/opencv-3.3.0/
+  $ mkdir build
+  $ cd build
+  $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+  $ -D CMAKE_INSTALL_PREFIX=/usr/local \
+  $ -D INSTALL_PYTHON_EXAMPLES=ON \
+  $ -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/modules \
+  $ -D BUILD_EXAMPLES=ON ..
+  ```
+  
+  Before we start the compiling process, we should increase our swap space size by changing CONF_SWAPSIZE value in /etc/dphys-swapfile from 100 (default) to 1024 and reactivate our configuration after modification. (Remember the change the value back after the installtion process.)
+  ```
+  $ # set size to absolute value, leaving empty (default) then uses computed value
+  $ #   you most likely don't want this, unless you have an special disk situation
+  $ CONF_SWAPSIZE=1024
+  $ sudo /etc/init.d/dphys-swapfile stop
+  $ sudo /etc/init.d/dphys-swapfile start
+  ```
+  
+  Here comes the compiling process! This will be a good time for you to grab some coffee and desserts cause this will takes a long long time.....................................(Probably 2 to 3 hours or more)
+  ```
+  $ make -j4
+  ```
+  
+  Having a nice rest? From here, the last thing we need to do is install OpenCV on RPI3:
+  ```
+  $ sudo make install
+  $ sudo ldconfig
+  ```
+  
+  And finally, create a soft link OpenCV bindings from where your OpenCV is installed.
+  ```
+  sudo ln -s /usr/local/lib/python2.7/dist-packages/cv2.so /home/pi/berryconda3/envs/navi/lib/python3.5/site-packages
+  ```
+  
+  Step 4.2: Install dlib
+  ----------------------
