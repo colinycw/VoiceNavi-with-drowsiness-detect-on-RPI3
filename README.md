@@ -170,4 +170,24 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   Step 4.4: Building drowsiness detection with OpenCV and dlib
   ------------------------------------------------------------
   
+  To start our implementation, we will need to install some packages in our environment.
+  ```
+  $ pip install imutils playsound pyobjc
+  ```
   
+  Then download the Drowsiness detection folder and place it at somewhere easy to reach. Execute python script file "donotsleep.py" by type in:
+  ```
+  $ python donotsleep.py --shape-predictor landmarks.dat --alarm alarm.wav
+  ```
+  
+  By this time when your eyes have been closed beyond total of 10 frames, indicating the driver is probably fall in a sleep, the speaker will play out alarm sound to wake the driver up. For the testing purpose, the screen will also show "DROWSINESS ALERT" in the frame. The result is depicted as the following figure.
+  ![Example]()
+  
+  Well done! You have now created a driver drowsiness warning system on your RPI3.
+  
+  Next, we will keep on to install navigation application on our RPI3.
+  
+Step 5: Setting Up Waze Navigation Application
+==============================================
+
+The program we will be using for navigation is an open source application called "Waze". The installation process of it is relatively simple in contrast to drowsiness detection in the previous step. 
