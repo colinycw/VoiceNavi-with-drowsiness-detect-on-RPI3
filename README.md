@@ -183,7 +183,7 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   ```
   
   By this time when your eyes have been closed beyond total of 10 frames, indicating the driver is probably fall in a sleep, the speaker will play out alarm sound to wake the driver up. For the testing purpose, the screen will also show "WAKE UP!" in the frame. The result is depicted as the following figure.
-  ![Example]()
+  ![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/drowsiness%20detection.png "Wake up alert")
   
   Well done! You have now created a driver drowsiness warning system on your RPI3.
   
