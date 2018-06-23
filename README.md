@@ -237,3 +237,10 @@ After that, we can execute the python script by typing in the code below and mak
 ```
 $ python saveDrive.py
 ```
+
+Reference
+=========
+https://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/
+https://www.pyimagesearch.com/2017/05/08/drowsiness-detection-opencv/
+https://www.pyimagesearch.com/2018/01/22/install-dlib-easy-complete-guide/
+https://github.com/sashakh/waze
