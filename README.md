@@ -14,7 +14,7 @@ In this guide, we will be using:
 
 Step 2: Setting Up Environment
 =============================
-For the sake of tidiness in system wide python library, we will be finishing this whole project within one virtual environment. The package management program we are using in this project is called "Berryconda", which is a Conda based distribution for the RPI3. To install Berryconda on RPI3, first download installer script according to the Raspberry Pi you are using from the website below and follow the steps:
+For the sake of tidiness in system wide python library, we will be finishing this whole project within one virtual environment. The package management program we are using in this project is called "Berryconda", which is a Conda based distribution for the RPI3. To install Berryconda on RPI3, first download the installer script according to the Raspberry Pi you are using from the website below and follow the steps:
 
 https://github.com/jjhelmus/berryconda
 
@@ -23,7 +23,7 @@ $ chmod +x Berryconda3-2.0.0-Linux-armv7l.sh`
 $ ./Berryconda3-2.0.0-Linux-armv7l.sh
 ```
 
-After following the prompt and finish the installation, we are then creating a virtual environment called "navi" and going into the virtual environment.
+After following the prompt and finish the installation, we are then creating a virtual environment called "navi" and going into this virtual environment.
 
 ```
 $ conda create -n navi
@@ -110,20 +110,20 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ unzip opencv_contrib.zip
   ```
   
-  Before compiling OpenCV source code, we have to install Numpy package and setup our build by typing:
+  Before compiling OpenCV source code, we have to install the Numpy package and setup our build by typing:
   ```
   $ pip install numpy
   $ cd ~/opencv-3.3.0/
   $ mkdir build
   $ cd build
   $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
-  $ -D CMAKE_INSTALL_PREFIX=/usr/local \
-  $ -D INSTALL_PYTHON_EXAMPLES=ON \
-  $ -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/modules \
-  $ -D BUILD_EXAMPLES=ON ..
+  $ 	-D CMAKE_INSTALL_PREFIX=/usr/local \
+  $ 	-D INSTALL_PYTHON_EXAMPLES=ON \
+  $ 	-D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/modules \
+  $ 	-D BUILD_EXAMPLES=ON ..
   ```
   
-  Before we start the compiling process, we should increase our swap space size by changing CONF_SWAPSIZE value in /etc/dphys-swapfile from 100 (default) to 1024 and reactivate our configuration after modification. (Remember the change the value back after the installtion process.)
+  Before we begin the compiling process, we should increase our swap space size by changing CONF_SWAPSIZE value in /etc/dphys-swapfile from 100 (default) to 1024 and reactivate our configuration after modification. (Remember to change the value back after the installtion process.)
   ```
   $ # set size to absolute value, leaving empty (default) then uses computed value
   $ #   you most likely don't want this, unless you have an special disk situation
@@ -132,7 +132,7 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ sudo /etc/init.d/dphys-swapfile start
   ```
   
-  Here comes the compiling process! This will be a good time for you to grab some coffee and desserts cause this will takes a long long time.....................................(Probably 2 to 3 hours or more)
+  Here comes the compiling process! This will be a good time for you to grab some coffee and desserts cause it will takes a long long time.....................................(Probably 2 to 3 hours or more)
   ```
   $ make -j4
   ```
@@ -143,7 +143,7 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ sudo ldconfig
   ```
   
-  And finally, create a soft link OpenCV bindings from where your OpenCV is installed.
+  And finally, create a soft link OpenCV bindings from where your OpenCV is installed. (The example below was made according to the environment settings on my RPI3. You should change them to fit in to your own situation.)
   ```
   $ sudo ln -s /usr/local/lib/python2.7/dist-packages/cv2.so /home/pi/berryconda3/envs/navi/lib/python3.5/site-packages
   ```
@@ -182,12 +182,12 @@ In this section, we are going to build up drowsiness detection on RPI3. Before t
   $ python donotsleep.py --shape-predictor landmarks.dat --alarm alarm.wav
   ```
   
-  By this time when your eyes have been closed beyond total of 10 frames, indicating the driver is probably fall in a sleep, the speaker will play out alarm sound to wake the driver up. For the testing purpose, the screen will also show "DROWSINESS ALERT" in the frame. The result is depicted as the following figure.
+  By this time when your eyes have been closed beyond total of 10 frames, indicating the driver is probably fall in a sleep, the speaker will play out alarm sound to wake the driver up. For the testing purpose, the screen will also show "WAKE UP!" in the frame. The result is depicted as the following figure.
   ![Example]()
   
   Well done! You have now created a driver drowsiness warning system on your RPI3.
   
-  Next, we will keep on to install navigation application on our RPI3.
+  Next, we will keep going on to install navigation application on our RPI3.
   
 Step 5: Setting Up Waze Navigation Application
 ==============================================
@@ -213,7 +213,7 @@ Because of the fact that we are not using a working gps module for positioning i
 Step 6: Hook Up All The Stuff
 =============================
 
-Just like what we have mentioned at the very begining of this guide. We want a navigation system act as an verbal guidance and also detecting drive's degree of concentration all at the same time. Now we have two of our major modules each working perfectly by their own, we are then going to let them doing their jobs in a simultaneous manner. To order to do this, create a python script called "saveDrive.py" and insert the following code in it: (Or you may directly download the python script file in this branch.)
+Just like what we have mentioned at the very begining of this guide. We want a navigation system act as an verbal guidance and also detecting drive's degree of concentration on driving all at the same time. Now we have two of our major modules each working perfectly by their own, we are then going to let them doing their jobs in a simultaneous manner. In order to do this, create a python script called "saveDrive.py" and insert the following code in it: (Or you may directly download the python script file in this branch.)
 
 ```
 import os
@@ -233,7 +233,7 @@ t1.start()
 t2.start()
 ```
 
-After that, we can execute the python script by typing in the code below and make this system working. Drive safe!
+After that, we can execute the python script by typing in the code below and make this system working. Well done!
 ```
 $ python saveDrive.py
 ```
