@@ -208,6 +208,7 @@ $ waze
 ```
 
 Because of the fact that we are not using a working gps module for positioning in this project, we can only use this as a demo and see the result in the picture below. But it still proves that the program is working properly on RPI3!
+
 ![Example](https://github.com/colinycw/VoiceNavi-with-drowsiness-detect-on-RPI3/blob/master/waze.png "Waze")
 
 Step 6: Hook Up All The Stuff
